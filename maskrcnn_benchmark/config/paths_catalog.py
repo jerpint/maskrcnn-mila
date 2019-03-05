@@ -103,12 +103,36 @@ class DatasetCatalog(object):
         "cityscapes_fine_instanceonly_seg_test_cocostyle": {
             "img_dir": "cityscapes/images",
             "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_test.json"
+        },
+        "avenue_train_set": {
+            "img_dir": "avenue/train",
+            "ann_file": "avenue/annotations/instances_avenue.json"
+        },
+        "avenue_validation_set": {
+            "img_dir": "avenue/validation",
+            "ann_file": "avenue/annotations/instances_avenue.json"
+        },
+        "avenue_test_set": {
+            "img_dir": "avenue/test",
+            "ann_file": "avenue/annotations/instances_avenue.json"
         }
+
     }
 
     @staticmethod
     def get(name):
         if "coco" in name:
+            data_dir = DatasetCatalog.DATA_DIR
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                root=os.path.join(data_dir, attrs["img_dir"]),
+                ann_file=os.path.join(data_dir, attrs["ann_file"]),
+            )
+            return dict(
+                factory="COCODataset",
+                args=args,
+            )
+        elif "avenue" in name:
             data_dir = DatasetCatalog.DATA_DIR
             attrs = DatasetCatalog.DATASETS[name]
             args = dict(
