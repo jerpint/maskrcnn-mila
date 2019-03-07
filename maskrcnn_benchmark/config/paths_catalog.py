@@ -106,15 +106,15 @@ class DatasetCatalog(object):
         },
         "avenue_train_set": {
             "img_dir": "avenue/train",
-            "ann_file": "avenue/annotations/instances_avenue.json"
+            "ann_file": "avenue/annotations/instances_train_avenue.json"
         },
         "avenue_validation_set": {
             "img_dir": "avenue/validation",
-            "ann_file": "avenue/annotations/instances_avenue.json"
+            "ann_file": "avenue/annotations/instances_valid_avenue.json"
         },
         "avenue_test_set": {
             "img_dir": "avenue/test",
-            "ann_file": "avenue/annotations/instances_avenue.json"
+            "ann_file": "avenue/annotations/instances_test_avenue.json"
         }
 
     }
