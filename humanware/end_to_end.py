@@ -111,7 +111,7 @@ class AvenueDetector(COCODemo):
         boxes = predictions.bbox
         house_number = self.extract_house_number(box_pil_img)
 
-        template = "{}: {:d} , conf: {:.2f}"
+        template = "{}: {:d} , bbox conf: {:.2f}"
         for box, score, label, hn in zip(boxes, scores, labels, house_number):
             x, y = box[:2]
             s = template.format(label, hn, score)
@@ -119,4 +119,4 @@ class AvenueDetector(COCODemo):
                 image, s, (x, y), cv2.FONT_HERSHEY_SIMPLEX, .5, (255, 255, 255), 1
             )
 
-        return image
+        return image, predictions, house_number
